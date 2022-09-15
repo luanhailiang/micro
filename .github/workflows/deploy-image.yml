@@ -44,7 +44,22 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build the Docker image
+      - name: Build grpc Docker image
         run: |
           docker build ./broker/connect/grpc --file ./upmicro/Dockerfile --tag $REGISTRY/luanhailiang/micro_broker_grpc
           docker push $REGISTRY/luanhailiang/micro_broker_grpc
+
+      - name: Build http Docker image
+        run: |
+          docker build ./broker/connect/http --file ./upmicro/Dockerfile --tag $REGISTRY/luanhailiang/micro_broker_http
+          docker push $REGISTRY/luanhailiang/micro_broker_http
+
+      - name: Build tcp Docker image
+        run: |
+          docker build ./broker/connect/tcp --file ./upmicro/Dockerfile --tag $REGISTRY/luanhailiang/micro_broker_tcp
+          docker push $REGISTRY/luanhailiang/micro_broker_tcp
+      
+      - name: Build web Docker image
+        run: |
+          docker build ./broker/connect/web --file ./upmicro/Dockerfile --tag $REGISTRY/luanhailiang/micro_broker_web
+          docker push $REGISTRY/luanhailiang/micro_broker_web
