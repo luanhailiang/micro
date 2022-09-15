@@ -45,4 +45,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build the Docker image
-        run: docker build ./broker/connet/grpc --file ./upmicro/Dockerfile --tag micro_broker_grpc
+        run: docker build ./broker/connect/grpc --file ./upmicro/Dockerfile --tag micro_broker_grpc
