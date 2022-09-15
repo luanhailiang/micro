@@ -1,0 +1,176 @@
+syntax = "proto3";
+
+package events;
+
+option csharp_namespace = "micro.events";
+option java_outer_classname="Events";
+option java_package="com.canglang.micro.proto";
+option go_package = "github.com/luanhailiang/micro.git/proto/events";
+
+
+//服务器状态同步，每分钟
+message ServerState {
+  int64  time = 1;      //事件时间
+  int32  zone = 2;      //区服id
+  string addr = 3;      //服务器ip
+}
+
+//服务器在线同步，每分钟
+message OnlineCount {
+  int64  time = 1;      //事件时间
+  string game = 2;      //游戏id
+  int32  zone = 3;      //区服id
+  string area = 4;      //国家地区
+  int32  ios  = 5;      //ios在线人数
+  int32  and  = 6;      //and在线人数
+}
+
+//注册事件
+message SignUp {
+  int64  time = 1;      //事件时间
+  string role = 2;      //玩家id
+  string zone = 3;      //区服id
+  string addr = 4;      //ip地址
+  int32  plat = 5;      //ios 0 /android 1
+}
+
+//登陆事件
+message SignIn {
+  int64  time = 1;      //事件时间
+  string role = 2;      //玩家id
+  string zone = 3;      //区服id
+  string addr = 4;      //ip地址
+  int32  plat = 5;      //ios 0 /android 1
+}
+
+//登陆事件
+message Heart {
+  int64  time = 1;      //事件时间
+  string role = 2;      //玩家id
+  string zone = 3;      //区服id
+  string addr = 4;      //ip地址
+  int32  plat = 5;      //ios 0 /android 1
+  int64  last = 6;      //已经在线时长
+}
+
+//超时事件
+message Beyond {
+  int64  time = 1;      //事件时间
+  string role = 2;      //玩家id
+  string zone = 3;      //区服id
+  string addr = 4;      //ip地址
+  int32  plat = 5;      //ios 0 /android 1
+  int64  last = 6;      //已经在线时长
+}
+
+
+//登陆事件
+message Logout {
+  int64  time = 1;      //事件时间
+  string role = 2;      //玩家id
+  string zone = 3;      //区服id
+  string addr = 4;      //ip地址
+  int32  plat = 5;      //ios 0 /android 1
+  int64  last = 6;      //在线时长
+  int32  type = 7;      //推出类型(0:正常，1:重复，2:防沉迷，3:GM)
+}
+
+//货币流水
+message MoneyFlow{
+  int64  time = 1;      //事件时间
+  string role = 2;      //玩家id
+  int32  coin = 3;      //货币类型
+  int64  num  = 4;      //变化数量
+  int64  now  = 5;      //当前数量
+  int32  why1 = 6;      //一级原因
+  int32  why2 = 7;      //二级原因
+}
+
+
+//物品流水
+message ItemFlow{
+  int64  time = 1;      //事件时间
+  string role = 2;      //玩家id
+  int32  type = 3;      //道具类型
+  int32  item = 4;      //道具id
+  int64  num  = 5;      //变化数量
+  int64  now  = 6;      //当前数量
+  int32  why1 = 7;      //一级原因
+  int32  why2 = 8;      //二级原因
+  int32  coin = 9;      //消耗货币
+  int64  cost = 10;      //小号数量
+} 
+
+//经验流水
+message ExpFlow {
+  int64  time    = 1;      //事件时间
+  string role    = 2;      //玩家id
+  int64  num     = 3;      //变化数量
+  int32  last    = 4;      //所用时长
+  int32  pre_lv  = 5;      //之前级别
+  int32  now_lv  = 6;      //当前级别
+  int32  why1    = 8;      //一级原因
+  int32  why2    = 9;      //二级原因
+}
+
+//升级流水
+message LevelFlow {
+  int64  time    = 1;      //事件时间
+  string role    = 2;      //玩家id
+  int32  last    = 3;      //所用时长
+  int32  pre_lv  = 4;      //之前级别
+  int32  now_lv  = 5;      //当前级别
+  int32  why1    = 6;      //一级原因
+  int32  why2    = 7;      //二级原因
+}
+
+//副本开启流水
+message RoundBgnFlow {
+  int64  time   = 1;      //事件时间
+  string role   = 2;      //玩家id
+  int32  type   = 3;      //副本类型 1:经验副本,2:爬塔,3:世界BOSS,4:公会战
+  int32  copy   = 4;      //副本关卡id
+  int32  team   = 5;      //队伍id
+  int32  tnum   = 6;      //队伍人数
+}
+
+//副本结束流水
+message RoundEndFlow {
+  int64  time   = 1;      //事件时间
+  string role   = 2;      //玩家id
+  int32  type   = 3;      //副本类型 1:经验副本,2:爬塔,3:世界BOSS,4:公会战
+  int32  copy   = 4;      //副本关卡id
+  int32  last   = 5;      //持续时长
+  int32  ret    = 6;      //结果 0:失败,1:成功
+  int32  rank   = 7;      //排名
+}
+
+//新手引导流水
+message GuideFlow {
+  int64  time   = 1;      //事件时间
+  string role   = 2;      //玩家id
+  int32  node   = 3;      //节点id
+  int32  skip   = 4;      //是否可跳过(0-不可跳过；1-可跳过；)
+}
+
+
+//vip升级流水
+message VipLvFlow {
+  int64  time    = 1;      //事件时间
+  string role    = 2;      //玩家id
+  int32  last    = 3;      //所用时长
+  int32  pre_lv  = 4;      //之前级别
+  int32  now_lv  = 5;      //当前级别
+  int32  why1    = 6;      //一级原因
+  int32  why2    = 7;      //二级原因
+}
+
+//聊天流水
+message ChatFlow {
+  int64  time       = 1;      //事件时间
+  string role       = 2;      //玩家id
+  string zone       = 3;      //区服id
+  string chatTab    = 4;      //频道类型
+  string chatTabId  = 5;      //频道id
+  string content    = 6;      //聊天内容
+}

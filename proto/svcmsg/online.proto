@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package online;
+
+option csharp_namespace = "micro.game.online";
+option java_outer_classname="SvcOnline";
+option java_package="com.canglang.micro.proto";
+option go_package = "github.com/luanhailiang/micro.git/service/online/proto;online";
+
+//Call Heart 心跳空包，活跃检查
+message CmdHeart {
+    int64 time = 1;
+    int32 plat = 2;
+}
+
+// 在线玩家列表
+message CmdOnlineList {
+    string space = 1;
+    repeated string list = 2;
+}
+
+
+// 在线玩家人数
+message CmdOnlineCount {
+    uint32 space = 1;
+    uint64 amount = 2;
+}
+
+message SpaceCount {
+    uint32 space = 1;
+    uint32 ios_count = 2;
+    uint32 and_count = 3;
+}
+
+// 在线玩家人数
+message CmdOnlineAllCount {
+    repeated SpaceCount list = 1;
+}

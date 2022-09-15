@@ -1,0 +1,16 @@
+{
+    "protoc": {
+        "path": "${workspaceRoot}/proto/bin/protoc",
+        "compile_on_save": true,
+        "options": [
+            "--proto_path=${workspaceRoot}/proto",
+            "--go_out=module=github.com/luanhailiang/micro.git:.",
+            "--go-grpc_out=module=github.com/luanhailiang/micro.git:.",
+            "--plugin=protoc-gen-go=${workspaceRoot}/proto/bin/protoc-gen-go",
+            "--plugin=protoc-gen-go-grpc=${workspaceRoot}/proto/bin/protoc-gen-go-grpc"
+        ]
+    },
+    "files.exclude": {
+        "vendor":true
+    }
+}

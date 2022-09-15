@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package broker;
+
+//option csharp_namespace = "micro.broker";
+option go_package = "github.com/luanhailiang/micro.git/proto/broker";
+
+import "rpcmsg/package.proto";
+
+//命令规范
+//cmd 长连接异步消息，补全消息后返回 
+//pub 本服务发布的消息，其他服务监听
+//sub 本服务订阅的消息，其他服务发布
+//req 短链接http请求消息
+//res 短链接http返回消息
+
+// 网关频道
+enum Topic{
+    TopicServer = 0;     //区服聊天 index 使用gameid
+    TopicPlayer = 1;     //玩家频道 index 使用userid
+    TopicLegion = 2;     //军团频道 index 使用军团id
+    TopicActive = 3;     //活动频道 index 使用活动id
+
+    TopicNumber = 4;     //频道数量 直接数组减少一次哈希
+}
+
+enum Platform{
+    PlatformIOS = 0;
+    PlatformAND = 1;
+
+    PlatformMax = 2;
+}
+
+message Channel {
+    Topic  topic = 1;
+    string index = 2;
+    repeated string array = 3;
+}
+
+//Call Login 当前链接登录
+//jwt token 解析玩家信息，并加入频道
+//jwt key放到环境变量
+message CmdLogin {
+    string token = 1;
+    int32  plat  = 2;   //ios 0 /android 1
+}
+
+
+//Call Enter 当前链接进入频道（玩家加入公会时）
+//同一个区域只能监听一个id，会自动离开上一个频道
+message CmdEnter {
+    Channel channel = 1;
+}
+
+//Call Leave 当前链接离开频道（玩家离开工会时）
+message CmdLeave {
+    Channel channel = 1;
+}
+
+//Call Heart 心跳空包，活跃检查
+message CmdHeart {
+    int64 time = 1;
+}
+
+//Call break 客户端断线通知回调
+message CmdBreak {
+    int32 type = 1;         //推出类型(0:正常，1:重复，2:防沉迷，3:GM)
+}
+
+//Sub Broad 所有网关监听并广播
+message SubBroad {
+    Channel channel = 1;
+    rpcmsg.BackMessage back = 2;
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package cache;
+
+option java_outer_classname="SvcCache";
+option java_package="com.canglang.micro.proto";
+option go_package = "github.com/luanhailiang/micro.git/service/cache/proto;cache";
+
+
+//消息压缩数据，如果不想proto编译文件，可以json直接请求，支持http
+message BuffData {
+  string _id  = 1;
+  string name = 2;
+  bytes  data = 3;
+  bool   json = 4; 
+}
+
+message CmdGetOne {
+  BuffData buff = 1;
+}
+
+message CmdSetOne {
+  BuffData buff = 1;
+}

@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+package info;
+
+option csharp_namespace = "micro.info";
+option java_outer_classname="Info";
+option java_package="com.canglang.micro.proto";
+option go_package = "github.com/luanhailiang/micro.git/service/info/proto;info";
+
+//消息压缩数据，如果不想proto编译文件，可以json直接请求，支持http
+message UserInfo {
+  string _id                  = 1;        //(玩家)唯一id
+  string vGameAppid           = 2;        //(必填)游戏APPID
+  string GameSvrId            = 3;        //(必填)登录服务ID，分区服场景使用，合服后上报合服后服务器ID。
+  int32  PlatID               = 4;        //(必填)ios 0 /android 1
+  int32  iZoneAreaID          = 5;        //(必填)注册服ID，分区服场景使用。其他场景时填写0
+  string vOpenID              = 6;        //(必填)用户OPENID号
+  // string vRoleID              = 5;        //(必填)玩家角色ID
+  string vRoleName            = 7;        //(必填)玩家角色名
+  string ClientVersion        = 8;        //(可填)客户端版本
+  string SystemSoftware       = 9;        //(可填)移动终端操作系统版本
+  string SystemHardware       = 10;       //(可填)移动终端机型
+  string TelecomOper          = 11;       //(必填)运营商
+  string Network              = 12;       //(可填)3G/WIFI/2G
+  int32  ScreenWidth          = 13;       //(可填)显示屏宽度
+  int32  ScreenHight          = 14;       //(可填)显示屏高度
+  float  Density              = 15;       //(可填)像素密度
+  int32  Channel              = 16;       //(必填)渠道(ios为1001,安卓根据渠道包id)
+  string CpuHardware          = 17;       //(可填)cpu类型|频率|核数
+  int32  Memory               = 18;       //(可填)内存信息单位M
+  string GLRender             = 19;       //(可填)opengl render信息
+  string GLVersion            = 20;       //(可填)opengl版本信息
+  string DeviceId             = 21;       //(必选)设备ID,安卓上报IMEI(正确值为15-17位),IOS上报IDFA(正确值为36位)(报原始信息,不要加密)
+  string vClientIP            = 22;       //(必填)客户端IP(后台服务器记录与玩家通信时的IP地址)
+  string vClientIPV6          = 23;       //(必填)客户端IPV6地址(若客户端使用IPV6通信则记录)
+  string ANDROID_OAID         = 24;       //(必填)匿名设备标识符,安卓上报(正确值为16/36/64位)(报原始信息,不要加密)
+  string IOS_CAID             = 25;       //(必填)匿名设备标识符,IOS上报(正确值为32位)(报原始信息,不要加密)
+  int32  iLevel               = 26;       //(必填)等级
+  int32  iVipLevel            = 27;       //(可填)VIP等级
+  int32  iRoleCE              = 28;       //(可填)玩家角色战力Combat Effectiveness
+  int32  PlayerFriendsNum     = 29;       //(必填)玩家好友数量
+  string vHeaderID            = 30;       //(必填)玩家角色头像ID
+  string iGuildID             = 31;       //(必填)公会ID，如果未加入公会，则填写0
+  string vGuildName           = 32;       //(可填)公会名称
+  int32  iProfessionID        = 33;       //(可填)职业ID
+  string vProfessionName      = 34;       //(可填)职业名称
+  string vBattleTypeStates    = 35;       //(必填)玩法开启状态(1:开启；0-未开启)详情。格式：玩法ID:开启状态;玩法ID:开启状态
+  int64  iBalance_MoneyType0  = 36;       //(必填)货币余额，货币类型值0
+  int64  iBalance_MoneyType1  = 37;       //(必填)货币余额，货币类型值1
+  int64  iBalance_MoneyType2  = 38;       //(必填)货币余额，货币类型值2
+  int64  iBalance_MoneyType3  = 39;       //(必填)货币余额，货币类型值3
+  int64  iBalance_MoneyType4  = 40;       //(必填)货币余额，货币类型值4
+}
+
+//设置info
+message CmdSetInfo {
+  UserInfo data = 1;
+}
+
+//设置info
+message CmdGetInfo {
+  UserInfo data = 1;
+}
+
+//游戏内角色信息
+message RoleInfo {
+  string _id          = 1;        //玩家id
+  uint32 space        = 2;        //区服id
+  string usrid        = 3;        //玩家账号
+  int32  level        = 4;        //玩家级别
+  int32  viplv        = 5;        //vip级别
+  int64  power        = 6;        //玩家战力
+  string name         = 7;        //玩家名称
+  int32  icon         = 8;        //玩家头像
+  int32  frame        = 9;        //玩家边框
+  int32  bubble       = 10;       //聊天气泡
+  int32  grade        = 11;       //爵位
+  int32  friend       = 12;       //好友数量
+  string union_id     = 13;       //工会id
+  string union_name   = 14;       //工会名称
+  int32  union_site   = 15;       //工会位置
+  int64  signin_time  = 16;       //登录时间
+  int64  logout_time  = 17;       //登出时间
+  uint32  role_id     = 18;       //玩家整形id
+}
+
+//设置info
+message CmdSetRoleInfo {
+  RoleInfo data = 1;
+}
+
+//设置info
+message CmdGetRoleInfo {
+  RoleInfo data = 1;
+}
+
+//设置info
+message CmdGetRoleList {
+  string account = 1;
+
+  repeated RoleInfo datas = 2;
+}
+
+//获取info
+message CmdAllRoleInfo {
+  bytes filter = 1;
+
+  repeated RoleInfo datas = 2;
+}

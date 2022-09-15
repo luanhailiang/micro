@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package item;
+
+option java_outer_classname="SvcItem";
+option java_package="com.canglang.micro.proto";
+option go_package = "github.com/luanhailiang/micro.git/service/item/proto;item";
+
+
+//消息压缩数据，如果不想proto编译文件，可以json直接请求，支持http
+message ItemData {
+  string _id  = 1;    //唯一id
+  string role = 2;    //拥有者
+  int32  code = 3;    //配置id
+  int64  size = 4;    //物品数量
+  bytes  data = 5;    //动态数据
+}
+
+message CmdGet {
+  repeated ItemData list = 1;
+}
+
+message CmdSet {
+  repeated ItemData list = 1;
+}
+
+message CmdChange {
+  repeated ItemData cost = 1;
+  repeated ItemData gain = 2;
+}

@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package rpcmsg;
+
+//option csharp_namespace = "micro.rpcmsg";
+option java_outer_classname="RpcMsg";
+option java_package="com.canglang.micro.proto";
+option go_package = "github.com/luanhailiang/micro.git/proto/rpcmsg";
+
+//元数据，访问者信息，分库分表依据，
+message MateMessage{
+  string space = 1;   //游戏分区 数据库按此分表,广播按此分区（减轻锁等待问题）
+  string index = 2;   //玩家索引 需全局唯一（和服）[space:player]
+  string usrid = 3;   //账号id
+  string sdkid = 4;   //平台id
+  string suuid = 5;   //平台账号id
+  string admin = 6;   //权限
+  uint64 count = 7;   //用户计数
+  string clnip = 8;   //客户段ip
+}
+
+//消息压缩数据，如果不想proto编译文件，可以json直接请求，支持http
+message BuffMessage{
+  string name = 1;
+  bytes  data = 2;
+  bool   json = 3; 
+}
+
+//进程间消息传送，grpc，nats
+message CallMessage{
+  MateMessage mate = 1;
+  BuffMessage buff = 2;
+}
+
+//进程间消息返回，grpc
+message BackMessage{
+  uint32 code = 1;
+  string info = 2;
+  BuffMessage buff = 3;
+}
+  
+//进程间短连接调用（服务间调用用户会变化，无需状态保持）
+service Command {
+  rpc Call(CallMessage) returns (BackMessage) {}
+}
+
+//客户端长连接调用（链接后保持客户端信息，减少携带信息）
+service Connect {
+  rpc Exec(BuffMessage) returns (BackMessage) {}
+  rpc Link(stream BuffMessage) returns (stream BackMessage) {}
+}
+
