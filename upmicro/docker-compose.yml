@@ -30,7 +30,7 @@ services:
     environment:
       - SERVE_NAME=broker
       - NATS_URL=nats:4222
-      - JWT_TOKEN_KEY=lkk123
+      - JWT_TOKEN_KEY=5656
       - DEBUG_LOG=true
     ports:
       - 9090:9090 #grpc
@@ -42,7 +42,7 @@ services:
     environment:
       - SERVE_NAME=broker
       - NATS_URL=nats:4222
-      - JWT_TOKEN_KEY=lkk123
+      - JWT_TOKEN_KEY=5656
       - DEBUG_LOG=true
     ports:
       - 8080:8080 #http
@@ -54,7 +54,7 @@ services:
     environment:
       - SERVE_NAME=broker
       - NATS_URL=nats:4222
-      - JWT_TOKEN_KEY=lkk123
+      - JWT_TOKEN_KEY=5656
       - DEBUG_LOG=true
     ports:
       - 7070:7070 #http
@@ -67,7 +67,7 @@ services:
     environment:
       - SERVE_NAME=broker
       - NATS_URL=nats:4222
-      - JWT_TOKEN_KEY=lkk123
+      - JWT_TOKEN_KEY=5656
       - DEBUG_LOG=true
     ports:
       - 8888:8080 #http
