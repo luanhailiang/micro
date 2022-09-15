@@ -28,6 +28,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+    - name: Set up Go 1.19
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.19
+      id: go
+
       - name: Make Build 
         run: make build
 
