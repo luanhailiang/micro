@@ -15,8 +15,8 @@ import (
 	"google.golang.org/protobuf/reflect/protoregistry"
 
 	"github.com/luanhailiang/micro.git/broker/manager"
-	"github.com/luanhailiang/micro.git/network/grpc_cli"
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
+	"github.com/luanhailiang/micro.git/plugins/message/grpc_cli"
 	"github.com/luanhailiang/micro.git/proto/rpcmsg"
 )
 
@@ -144,7 +144,7 @@ func ProtectHandle(c manager.Connecter, cmd *rpcmsg.BuffMessage) *rpcmsg.BackMes
 			log.Errorf("handle not login:%s", c.GetAddr())
 			return nil
 		}
-		ctx := with_val.NewMateContext(context.Background(), mate)
+		ctx := matedata.NewMateContext(context.Background(), mate)
 		ret, err = grpc_cli.CallBuff(ctx, cmd)
 	}
 	if err != nil {

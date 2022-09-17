@@ -1,4 +1,4 @@
-package with_val
+package codec
 
 import (
 	"encoding/binary"
@@ -10,7 +10,7 @@ import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
-//设置成零，按理不会跟mongo重复
+// 设置成零，按理不会跟mongo重复
 var processUnique = [4]byte{0, 0, 0, 0}
 
 func GetRoleID(space, count uint32) uint32 {
@@ -29,7 +29,7 @@ func GetIDByObjectID(id primitive.ObjectID) uint32 {
 	return GetRoleID(space, count)
 }
 
-//合服后用户唯一id(space 必须是区服id整数，为了兼容hero mysql中的id)
+// 合服后用户唯一id(space 必须是区服id整数，为了兼容hero mysql中的id)
 func GetObjectIDByID(id uint32) primitive.ObjectID {
 	//TODO 修改成和服规则
 	space, index := GetSpaceCount(id)

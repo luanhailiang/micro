@@ -13,7 +13,7 @@ import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"
 
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
 	"github.com/luanhailiang/micro.git/proto/rpcmsg"
 )
 
@@ -68,9 +68,9 @@ func Call(ctx context.Context, msg *rpcmsg.CallMessage) (*rpcmsg.BackMessage, er
 	}
 
 	if msg.GetMate() != nil {
-		ctx = with_val.NewMateContext(ctx, msg.GetMate())
+		ctx = matedata.NewMateContext(ctx, msg.GetMate())
 	} else {
-		msg.Mate, _ = with_val.FromMateContext(ctx)
+		msg.Mate, _ = matedata.FromMateContext(ctx)
 	}
 
 	logrus.Debugf("Cmd => (%v) %s [%v]", msg.Mate, name, dst)

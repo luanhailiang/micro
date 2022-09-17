@@ -5,9 +5,10 @@ import (
 	"time"
 
 	"github.com/luanhailiang/micro.git/broker/manager"
-	"github.com/luanhailiang/micro.git/network/nats_pub"
-	"github.com/luanhailiang/micro.git/network/nats_sub"
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/codec"
+	"github.com/luanhailiang/micro.git/plugins/events/nats_pub"
+	"github.com/luanhailiang/micro.git/plugins/events/nats_sub"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
 	"github.com/luanhailiang/micro.git/proto/broker"
 	"github.com/luanhailiang/micro.git/proto/events"
 	"github.com/luanhailiang/micro.git/proto/rpcmsg"
@@ -33,11 +34,11 @@ func (p *NatsHandler) BROKER_SubBroad(ctx context.Context, msg *broker.SubBroad)
 }
 
 func (p *NatsHandler) BROKER_Beyond(ctx context.Context, msg *events.Beyond) {
-	mate, _ := with_val.FromMateContext(ctx)
+	mate, _ := matedata.FromMateContext(ctx)
 
 	preConn := manager.GetMasterInstance().Get(msg.Role)
 	if preConn != nil {
-		buff, _ := with_val.ToBuff(&broker.CmdBreak{Type: 2}, false)
+		buff, _ := codec.ToBuff(&broker.CmdBreak{Type: 2}, false)
 		back := &rpcmsg.BackMessage{
 			Buff: buff,
 		}

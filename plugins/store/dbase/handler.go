@@ -10,9 +10,9 @@ import (
 	"google.golang.org/protobuf/proto"
 	"gopkg.in/mgo.v2/bson"
 
-	"github.com/luanhailiang/micro.git/database/mem"
-	"github.com/luanhailiang/micro.git/database/mgo"
-	"github.com/luanhailiang/micro.git/database/rds"
+	mem "github.com/luanhailiang/micro.git/plugins/store/cache"
+	mgo "github.com/luanhailiang/micro.git/plugins/store/mongo"
+	rds "github.com/luanhailiang/micro.git/plugins/store/redis"
 )
 
 var LOCAL_CACHE bool

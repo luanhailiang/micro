@@ -6,7 +6,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -57,7 +57,7 @@ func GetCollection(ctx context.Context, table string) *mongo.Collection {
 	if !db.zone {
 		return db.database.Collection(table)
 	}
-	mate, ok := with_val.FromMateContext(ctx)
+	mate, ok := matedata.FromMateContext(ctx)
 	if !ok {
 		logrus.Panic("keyCtx lost mate")
 	}

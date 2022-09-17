@@ -7,8 +7,9 @@ import (
 
 	"github.com/luanhailiang/micro.git/broker/manager"
 	"github.com/luanhailiang/micro.git/broker/register"
-	"github.com/luanhailiang/micro.git/network/nats_pub"
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/codec"
+	"github.com/luanhailiang/micro.git/plugins/events/nats_pub"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
 	"github.com/luanhailiang/micro.git/proto/broker"
 	"github.com/luanhailiang/micro.git/proto/events"
 	"github.com/luanhailiang/micro.git/proto/rpcmsg"
@@ -28,7 +29,7 @@ type GrpcHandler struct {
 
 // 登录解析信息并加入频道
 func (p *GrpcHandler) CmdLogin(c manager.Connecter, cmd *broker.CmdLogin) (*broker.CmdLogin, uint32, string) {
-	mate, err := with_val.JwtMate(cmd.Token)
+	mate, err := matedata.JwtMate(cmd.Token)
 	if err != nil {
 		return cmd, uint32(rpcmsg.Code_UNKNOWN), err.Error()
 	}
@@ -42,7 +43,7 @@ func (p *GrpcHandler) CmdLogin(c manager.Connecter, cmd *broker.CmdLogin) (*brok
 
 	preConn := manager.GetMasterInstance().Get(mate.Index)
 	if preConn != nil {
-		buff, _ := with_val.ToBuff(&broker.CmdBreak{Type: 1}, p.json)
+		buff, _ := codec.ToBuff(&broker.CmdBreak{Type: 1}, p.json)
 		back := &rpcmsg.BackMessage{
 			Buff: buff,
 		}

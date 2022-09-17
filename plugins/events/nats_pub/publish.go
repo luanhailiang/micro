@@ -7,7 +7,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/codec"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
 	"github.com/luanhailiang/micro.git/proto/rpcmsg"
 )
 
@@ -21,7 +22,7 @@ func init() {
 
 // Pub 调用函数
 func PubMate(mate *rpcmsg.MateMessage, msg proto.Message) {
-	buff, _ := with_val.ToBuff(msg, isJson)
+	buff, _ := codec.ToBuff(msg, isJson)
 	name := proto.MessageName(msg)
 	natsMsg := &rpcmsg.CallMessage{
 		Mate: mate,
@@ -34,7 +35,7 @@ func PubMate(mate *rpcmsg.MateMessage, msg proto.Message) {
 
 // Pub 调用函数
 func Pub(ctx context.Context, msg proto.Message) {
-	mate, ok := with_val.FromMateContext(ctx)
+	mate, ok := matedata.FromMateContext(ctx)
 	if !ok {
 		log.Errorf("nats pub lost mate data:%s", proto.MessageName(msg))
 	}
@@ -43,7 +44,7 @@ func Pub(ctx context.Context, msg proto.Message) {
 
 // Pub 调用函数
 func SpacePubMate(mate *rpcmsg.MateMessage, msg proto.Message) {
-	buff, _ := with_val.ToBuff(msg, isJson)
+	buff, _ := codec.ToBuff(msg, isJson)
 	name := proto.MessageName(msg)
 	natsMsg := &rpcmsg.CallMessage{
 		Mate: mate,
@@ -56,7 +57,7 @@ func SpacePubMate(mate *rpcmsg.MateMessage, msg proto.Message) {
 
 // Pub 调用函数
 func SpacePub(ctx context.Context, msg proto.Message) {
-	mate, ok := with_val.FromMateContext(ctx)
+	mate, ok := matedata.FromMateContext(ctx)
 	if !ok {
 		log.Errorf("nats pub lost mate data:%s", proto.MessageName(msg))
 	}
@@ -72,7 +73,7 @@ func IndexPub(index string, msg *rpcmsg.BackMessage) {
 
 // Pub 调用函数
 func IndexPubMessage(index string, msg proto.Message) {
-	buff, _ := with_val.ToBuff(msg, isJson)
+	buff, _ := codec.ToBuff(msg, isJson)
 	back := &rpcmsg.BackMessage{
 		Buff: buff,
 	}

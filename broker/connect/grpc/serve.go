@@ -8,8 +8,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 
-	"github.com/luanhailiang/micro.git/network/grpc_cli"
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
+	"github.com/luanhailiang/micro.git/plugins/message/grpc_cli"
 	"github.com/luanhailiang/micro.git/proto/rpcmsg"
 	"github.com/sirupsen/logrus"
 )
@@ -29,7 +29,7 @@ func (s *Server) Exec(ctx context.Context, buff *rpcmsg.BuffMessage) (*rpcmsg.Ba
 	//要从jwt里获取防止修改
 	mate := &rpcmsg.MateMessage{}
 	logrus.Debugf("cmd => %v %v", mate, buff)
-	ctx = with_val.NewMateContext(ctx, mate)
+	ctx = matedata.NewMateContext(ctx, mate)
 	back, err := grpc_cli.CallBuff(ctx, buff)
 	logrus.Debugf("cmd <= %v %v", mate, back)
 	return back, err

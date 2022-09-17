@@ -3,7 +3,7 @@ package manager
 import (
 	"sync"
 
-	"github.com/luanhailiang/micro.git/network/nats_sub"
+	"github.com/luanhailiang/micro.git/plugins/events/nats_sub"
 	"github.com/luanhailiang/micro.git/proto/rpcmsg"
 	"github.com/nats-io/nats.go"
 	"github.com/sirupsen/logrus"

@@ -10,14 +10,15 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/codec"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
 	"github.com/luanhailiang/micro.git/proto/rpcmsg"
 )
 
 func Cmd(ctx context.Context, msg proto.Message) (uint32, string) {
-	ctx = with_val.AddFromContext(ctx, os.Getenv("SERVE_NAME"))
+	ctx = matedata.AddFromContext(ctx, os.Getenv("SERVE_NAME"))
 
-	buff, err := with_val.ToBuff(msg, false)
+	buff, err := codec.ToBuff(msg, false)
 	if err != nil {
 		return uint32(codes.Unknown), err.Error()
 	}
@@ -35,9 +36,9 @@ func Cmd(ctx context.Context, msg proto.Message) (uint32, string) {
 }
 
 func Call(ctx context.Context, msg proto.Message) (*rpcmsg.BackMessage, error) {
-	ctx = with_val.AddFromContext(ctx, os.Getenv("SERVE_NAME"))
+	ctx = matedata.AddFromContext(ctx, os.Getenv("SERVE_NAME"))
 
-	buff, err := with_val.ToBuff(msg, false)
+	buff, err := codec.ToBuff(msg, false)
 	if err != nil {
 		return nil, err
 	}

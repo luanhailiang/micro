@@ -10,7 +10,7 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/sirupsen/logrus"
 
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
 )
 
 var db *DBClient
@@ -56,7 +56,7 @@ func Key(ctx context.Context, names ...string) string {
 		keys = append(keys, names...)
 		return strings.Join(keys, "_")
 	}
-	mate, ok := with_val.FromMateContext(ctx)
+	mate, ok := matedata.FromMateContext(ctx)
 	if !ok {
 		logrus.Errorf("keyCtx lost mate")
 	}

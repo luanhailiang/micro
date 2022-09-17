@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/luanhailiang/micro.git/network/with_val"
+	"github.com/luanhailiang/micro.git/plugins/matedata"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/proto"
 )
@@ -77,7 +77,7 @@ func (p *Manager) index(ctx context.Context, table, id string) string {
 	if !p.zone {
 		return fmt.Sprintf("%s_%s", table, id)
 	}
-	mate, ok := with_val.FromMateContext(ctx)
+	mate, ok := matedata.FromMateContext(ctx)
 	if !ok {
 		logrus.Errorf("keyCtx lost mate")
 	}
