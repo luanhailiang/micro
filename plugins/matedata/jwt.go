@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/golang-jwt/jwt"
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 	"github.com/sirupsen/logrus"
 )
 

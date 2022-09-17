@@ -5,7 +5,7 @@ package rpcmsg;
 //option csharp_namespace = "micro.rpcmsg";
 option java_outer_classname="RpcMsg";
 option java_package="com.canglang.micro.proto";
-option go_package = "github.com/luanhailiang/micro.git/proto/rpcmsg";
+option go_package = "github.com/luanhailiang/micro/proto/rpcmsg";
 
 //元数据，访问者信息，分库分表依据，
 message MateMessage{

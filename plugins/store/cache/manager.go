@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/luanhailiang/micro.git/plugins/matedata"
+	"github.com/luanhailiang/micro/plugins/matedata"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/proto"
 )

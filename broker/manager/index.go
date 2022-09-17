@@ -3,7 +3,7 @@ package manager
 import (
 	"sync"
 
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 )
 
 // Connecter 网络消息处理模块

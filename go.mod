@@ -1,4 +1,4 @@
-module github.com/luanhailiang/micro.git
+module github.com/luanhailiang/micro
 
 go 1.19
 

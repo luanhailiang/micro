@@ -12,9 +12,9 @@ import (
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc/metadata"
 
-	"github.com/luanhailiang/micro.git/plugins/matedata"
-	"github.com/luanhailiang/micro.git/plugins/message/grpc_cli"
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/plugins/matedata"
+	"github.com/luanhailiang/micro/plugins/message/grpc_cli"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 )
 
 func CORSMiddleware() gin.HandlerFunc {

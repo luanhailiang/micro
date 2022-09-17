@@ -14,10 +14,10 @@ import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"
 
-	"github.com/luanhailiang/micro.git/broker/manager"
-	"github.com/luanhailiang/micro.git/plugins/matedata"
-	"github.com/luanhailiang/micro.git/plugins/message/grpc_cli"
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/broker/manager"
+	"github.com/luanhailiang/micro/plugins/matedata"
+	"github.com/luanhailiang/micro/plugins/message/grpc_cli"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 )
 
 // Command 所有命令制定当前结构体

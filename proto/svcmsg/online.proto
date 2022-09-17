@@ -5,7 +5,7 @@ package online;
 option csharp_namespace = "micro.game.online";
 option java_outer_classname="SvcOnline";
 option java_package="com.canglang.micro.proto";
-option go_package = "github.com/luanhailiang/micro.git/service/online/proto;online";
+option go_package = "github.com/luanhailiang/micro/service/online/proto;online";
 
 //Call Heart 心跳空包，活跃检查
 message CmdHeart {

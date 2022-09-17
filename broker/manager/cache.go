@@ -3,7 +3,7 @@ package manager
 import (
 	"sync"
 
-	"github.com/luanhailiang/micro.git/proto/broker"
+	"github.com/luanhailiang/micro/proto/broker"
 )
 
 type Cache struct {

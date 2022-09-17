@@ -3,7 +3,7 @@ package codec
 import (
 	"encoding/json"
 
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"

@@ -4,7 +4,7 @@ package item;
 
 option java_outer_classname="SvcItem";
 option java_package="com.canglang.micro.proto";
-option go_package = "github.com/luanhailiang/micro.git/service/item/proto;item";
+option go_package = "github.com/luanhailiang/micro/service/item/proto;item";
 
 
 //消息压缩数据，如果不想proto编译文件，可以json直接请求，支持http

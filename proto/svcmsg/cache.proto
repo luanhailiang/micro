@@ -4,7 +4,7 @@ package cache;
 
 option java_outer_classname="SvcCache";
 option java_package="com.canglang.micro.proto";
-option go_package = "github.com/luanhailiang/micro.git/service/cache/proto;cache";
+option go_package = "github.com/luanhailiang/micro/service/cache/proto;cache";
 
 
 //消息压缩数据，如果不想proto编译文件，可以json直接请求，支持http

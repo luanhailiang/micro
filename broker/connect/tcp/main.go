@@ -8,7 +8,7 @@ import (
 
 	"github.com/sirupsen/logrus"
 
-	_ "github.com/luanhailiang/micro.git/broker/handler"
+	_ "github.com/luanhailiang/micro/broker/handler"
 )
 
 func main() {

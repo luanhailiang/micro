@@ -8,9 +8,9 @@ import (
 	"google.golang.org/grpc/peer"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/luanhailiang/micro.git/broker/register"
-	"github.com/luanhailiang/micro.git/proto/broker"
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/broker/register"
+	"github.com/luanhailiang/micro/proto/broker"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 )
 
 // NewConnecter 获取一个消息处理对象

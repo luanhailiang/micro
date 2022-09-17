@@ -5,7 +5,7 @@ package info;
 option csharp_namespace = "micro.info";
 option java_outer_classname="Info";
 option java_package="com.canglang.micro.proto";
-option go_package = "github.com/luanhailiang/micro.git/service/info/proto;info";
+option go_package = "github.com/luanhailiang/micro/service/info/proto;info";
 
 //消息压缩数据，如果不想proto编译文件，可以json直接请求，支持http
 message UserInfo {

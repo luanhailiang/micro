@@ -7,7 +7,7 @@
 package broker
 
 import (
-	rpcmsg "github.com/luanhailiang/micro.git/proto/rpcmsg"
+	rpcmsg "github.com/luanhailiang/micro/proto/rpcmsg"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

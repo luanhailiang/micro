@@ -14,9 +14,9 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 
-	"github.com/luanhailiang/micro.git/plugins/codec"
-	"github.com/luanhailiang/micro.git/plugins/matedata"
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/plugins/codec"
+	"github.com/luanhailiang/micro/plugins/matedata"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 )
 
 // Command 所有命令制定当前结构体

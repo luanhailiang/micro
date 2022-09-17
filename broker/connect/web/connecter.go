@@ -11,9 +11,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/luanhailiang/micro.git/broker/register"
-	"github.com/luanhailiang/micro.git/proto/broker"
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/broker/register"
+	"github.com/luanhailiang/micro/proto/broker"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 )
 
 const (

@@ -3,8 +3,8 @@ package manager
 import (
 	"sync"
 
-	"github.com/luanhailiang/micro.git/plugins/events/nats_sub"
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/plugins/events/nats_sub"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 	"github.com/nats-io/nats.go"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/proto"

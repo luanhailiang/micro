@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package rpcmsg;
 
-option go_package = "github.com/luanhailiang/micro.git/proto/rpcmsg";
+option go_package = "github.com/luanhailiang/micro/proto/rpcmsg";
 
 
 // The canonical error codes for gRPC APIs.

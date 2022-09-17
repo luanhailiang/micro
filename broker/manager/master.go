@@ -3,8 +3,8 @@ package manager
 import (
 	"hash/fnv"
 
-	"github.com/luanhailiang/micro.git/proto/broker"
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/proto/broker"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 	"github.com/sirupsen/logrus"
 )
 

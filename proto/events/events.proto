@@ -5,7 +5,7 @@ package events;
 option csharp_namespace = "micro.events";
 option java_outer_classname="Events";
 option java_package="com.canglang.micro.proto";
-option go_package = "github.com/luanhailiang/micro.git/proto/events";
+option go_package = "github.com/luanhailiang/micro/proto/events";
 
 
 //服务器状态同步，每分钟

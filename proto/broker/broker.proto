@@ -3,7 +3,7 @@ syntax = "proto3";
 package broker;
 
 //option csharp_namespace = "micro.broker";
-option go_package = "github.com/luanhailiang/micro.git/proto/broker";
+option go_package = "github.com/luanhailiang/micro/proto/broker";
 
 import "rpcmsg/package.proto";
 

@@ -5,8 +5,8 @@ update:
 
 .PHONY: proto
 proto: update
-	./proto/bin/protoc -I=./proto --plugin=protoc-gen-go=./proto/bin/protoc-gen-go --go_out=module=github.com/luanhailiang/micro.git:. proto/broker/*.proto
-	./proto/bin/protoc -I=./proto --plugin=protoc-gen-go=./proto/bin/protoc-gen-go --go_out=module=github.com/luanhailiang/micro.git:. --plugin=protoc-gen-go-grpc=./proto/bin/protoc-gen-go-grpc --go-grpc_out=module=github.com/luanhailiang/micro.git:. proto/rpcmsg/*.proto
+	./proto/bin/protoc -I=./proto --plugin=protoc-gen-go=./proto/bin/protoc-gen-go --go_out=module=github.com/luanhailiang/micro:. proto/broker/*.proto
+	./proto/bin/protoc -I=./proto --plugin=protoc-gen-go=./proto/bin/protoc-gen-go --go_out=module=github.com/luanhailiang/micro:. --plugin=protoc-gen-go-grpc=./proto/bin/protoc-gen-go-grpc --go-grpc_out=module=github.com/luanhailiang/micro:. proto/rpcmsg/*.proto
 	for f in service/* ; do \
 		if [ -d "$${f}/proto" ]; then \
 			echo "mongo" $${f} ; \

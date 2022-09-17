@@ -6,7 +6,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/luanhailiang/micro.git/plugins/matedata"
+	"github.com/luanhailiang/micro/plugins/matedata"
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

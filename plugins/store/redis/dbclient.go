@@ -10,7 +10,7 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/sirupsen/logrus"
 
-	"github.com/luanhailiang/micro.git/plugins/matedata"
+	"github.com/luanhailiang/micro/plugins/matedata"
 )
 
 var db *DBClient

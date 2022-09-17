@@ -4,14 +4,14 @@ import (
 	"context"
 	"time"
 
-	"github.com/luanhailiang/micro.git/broker/manager"
-	"github.com/luanhailiang/micro.git/plugins/codec"
-	"github.com/luanhailiang/micro.git/plugins/events/nats_pub"
-	"github.com/luanhailiang/micro.git/plugins/events/nats_sub"
-	"github.com/luanhailiang/micro.git/plugins/matedata"
-	"github.com/luanhailiang/micro.git/proto/broker"
-	"github.com/luanhailiang/micro.git/proto/events"
-	"github.com/luanhailiang/micro.git/proto/rpcmsg"
+	"github.com/luanhailiang/micro/broker/manager"
+	"github.com/luanhailiang/micro/plugins/codec"
+	"github.com/luanhailiang/micro/plugins/events/nats_pub"
+	"github.com/luanhailiang/micro/plugins/events/nats_sub"
+	"github.com/luanhailiang/micro/plugins/matedata"
+	"github.com/luanhailiang/micro/proto/broker"
+	"github.com/luanhailiang/micro/proto/events"
+	"github.com/luanhailiang/micro/proto/rpcmsg"
 )
 
 func init() {

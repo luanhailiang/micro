@@ -1,2 +1,2 @@
-protoc -I=. --go_out=module=github.com/luanhailiang/micro.git/proto:.  --go-grpc_out=module=github.com/luanhailiang/micro.git/proto:. rpcmsg/*.proto
-protoc -I=. --go_out=module=github.com/luanhailiang/micro.git/proto:.  --go-grpc_out=module=github.com/luanhailiang/micro.git/proto:. broker/*.proto
+protoc -I=. --go_out=module=github.com/luanhailiang/micro/proto:.  --go-grpc_out=module=github.com/luanhailiang/micro/proto:. rpcmsg/*.proto
+protoc -I=. --go_out=module=github.com/luanhailiang/micro/proto:.  --go-grpc_out=module=github.com/luanhailiang/micro/proto:. broker/*.proto
